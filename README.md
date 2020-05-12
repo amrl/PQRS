@@ -1,7 +1,9 @@
 # PQRS
 A Painless QR Scanner.
 
-Only for web links. Scan, view, open. Nothing else.
+Only for web links.
+
+Scan, view, open. Nothing else.
 
 ## Screenshots
 <img src="./images/scanning.png" height="500" />&nbsp;&nbsp;&nbsp;&nbsp;
