@@ -1,10 +1,12 @@
 package me.amrl.pqrs;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.util.Patterns;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -30,14 +32,47 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            if(result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-            }
-        } else {
+
+        if (result == null) {  // retry
             super.onActivityResult(requestCode, resultCode, data);
+            return;
         }
+
+        if (result.getContents() == null) {  // exit on back while scanning
+            finish();
+            return;
+        }
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        if (Patterns.WEB_URL.matcher(result.getContents()).matches()) {
+            alert.setTitle("Scanned URL");
+            alert.setMessage(result.getContents());
+            alert.setPositiveButton("Open", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // open URL
+                    finish();
+                }
+            });
+            alert.setNegativeButton("Rescan", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    startScan();
+                }
+            });
+
+        } else {
+            alert.setTitle("Not a URL");
+            alert.setMessage(result.getContents());
+            alert.setPositiveButton("Rescan", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    startScan();
+                }
+            });
+        }
+
+        alert.create().show();
     }
 }
