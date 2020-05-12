@@ -7,4 +7,4 @@
 # IDEA files
 /.idea/
 /out/
-/*.iml
+*iml
