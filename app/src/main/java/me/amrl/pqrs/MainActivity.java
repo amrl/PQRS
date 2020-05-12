@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 
@@ -46,13 +47,15 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
         if (Patterns.WEB_URL.matcher(result.getContents()).matches()) {
+            final String url = result.getContents();
+
             alert.setTitle("Scanned URL");
             alert.setMessage(result.getContents());
             alert.setPositiveButton("Open", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // open URL
-                    finish();
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(browserIntent);
                 }
             });
             alert.setNegativeButton("Rescan", new DialogInterface.OnClickListener() {
