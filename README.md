@@ -12,13 +12,13 @@ Scan, view, open. Nothing else.
 ## Features
 * Scan QR codes for web links
 * View QR code content
-* If the content is a web link, you have the option of opening it
-* If not, you can still view the text content
+* If it is a web link, you have the option of opening it
+* If not, you can still view the text content embedded
 
 ## Motivations
 * I only scan QR codes for web links, nothing else
 * Most QR code scanners in the store request for unnecessary
-permissions
+permissions (more than just the camera)
 * Most QR code scanners in the store contain ads
 
 ## Acknowledgements

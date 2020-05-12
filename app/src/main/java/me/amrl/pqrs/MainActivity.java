@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        if (result.getContents() == null) {  // exit on back while scanning
-            finish();
+        if (result.getContents() == null) {
+//            finish();  // exit on back while scanning
             return;
         }
 
