@@ -8,11 +8,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Button scanBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startScan();
+
+        scanBtn = findViewById(R.id.button);
+        scanBtn.setOnClickListener(this);
     }
 
     private void startScan() {
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         if (Patterns.WEB_URL.matcher(result.getContents()).matches()) {
             final String url = result.getContents();
 
-            alert.setTitle("Scanned URL");
+            alert.setTitle("Web URL found!");
             alert.setMessage(result.getContents());
             alert.setPositiveButton("Open", new DialogInterface.OnClickListener() {
                 @Override
@@ -66,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
         } else {
-            alert.setTitle("Not a URL");
+            alert.setTitle("Not a web URL...");
             alert.setMessage(result.getContents());
             alert.setPositiveButton("Rescan", new DialogInterface.OnClickListener() {
                 @Override
@@ -77,5 +84,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         alert.create().show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        startScan();
     }
 }
