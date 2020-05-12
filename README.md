@@ -1,5 +1,5 @@
 # PQRS
-A Painless QR Scanner.
+A **P**ainless **QR** **S**canner.
 
 Only for web links.
 
@@ -15,7 +15,7 @@ Scan, view, open. Nothing else.
 * If the content is a web link, you have the option of opening it
 * If not, you can still view the text content
 
-## Why
+## Motivations
 * I only scan QR codes for web links, nothing else
 * Most QR code scanners in the store request for unnecessary
 permissions
