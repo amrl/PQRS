@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (Patterns.WEB_URL.matcher(result.getContents()).matches()) {
             final String url = result.getContents();
 
-            alert.setTitle("Web URL found!");
+            alert.setTitle("Web link found!");
             alert.setMessage(result.getContents());
             alert.setPositiveButton("Open", new DialogInterface.OnClickListener() {
                 @Override
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             });
 
         } else {
-            alert.setTitle("Not a web URL...");
+            alert.setTitle("Not a web link...");
             alert.setMessage(result.getContents());
             alert.setPositiveButton("Rescan", new DialogInterface.OnClickListener() {
                 @Override
