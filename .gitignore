@@ -8,3 +8,5 @@
 /.idea/
 /out/
 *iml
+
+app/release/
