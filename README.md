@@ -5,6 +5,8 @@ Only for web links.
 
 Scan, view, open. Nothing else.
 
+Download: [APK](https://github.com/amrl/PQRS/releases)
+
 ## Compatibility
 \>= Android 4.1 (Jelly Bean)
 
@@ -23,7 +25,7 @@ Tested up to Android 10.
 
 ## Motivations
 * I only scan QR codes for web links, nothing else
-* I want a quick and easy way to scan with no frills
+* I want to scan immediately after opening the app
 * Most QR code scanners in the store request for unnecessary
 permissions (more than just the camera)
 * Most QR code scanners in the store contain ads
