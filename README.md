@@ -1,4 +1,4 @@
-# PQRS
+# PQRS <img src="./images/icon.png" height="20" />
 A **P**ainless **QR** **S**canner.
 
 Only for web links.
